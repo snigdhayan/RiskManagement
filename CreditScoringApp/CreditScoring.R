@@ -2,7 +2,7 @@
 # Credit Scoring via Logistic Regression
 library(scorecard)
 
-# Foad and preprocess data
+# Load and preprocess data
 data("germancredit")
 
 # Filter variables based on specified conditions, such as information value, missing rate, identical value rate
