@@ -44,7 +44,8 @@ m_step = step(m1, direction="both", trace = FALSE)
 m2 = eval(m_step$call)
 # vif(m2, merge_coef = TRUE) # summary(m2)
 
-# saveRDS(m2, file = './myCreditScoringModel.rds')
+# setwd('~/MyProgramsWindows/Repositories/RiskManagement/CreditScoringApp/')
+# saveRDS(m2, file = './CreditScoringShinyApp/myCreditScoringModel.rds')
 
 
 # Predicted probability
