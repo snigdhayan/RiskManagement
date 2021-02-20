@@ -8,7 +8,7 @@ ui <- fluidPage(
     
     pageWithSidebar(
         sidebarPanel(
-            numericInput('Duration', 'Duration in months of checking account', value = 24, min = 1, max = 100),
+            numericInput('Duration', 'Duration of checking account in months', value = 24, min = 1, max = 100),
             numericInput('Age', 'Age in years', value = 40, min = 1, max = 100),
             actionButton("submit", label = "Calculate Credit Score")
         ),
