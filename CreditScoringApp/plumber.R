@@ -13,8 +13,8 @@ model <- readRDS('./myCreditScoringModel.rds')
 #* @param age_in_years ...enter the value as a number
 #* @get /predict
 function(duration_in_months,age_in_years) {
-  df <- data.frame("duration_in_month_woe" = as.numeric(duration_in_months), 
-                   "age_in_years_woe" = as.numeric(age_in_years))
+  df <- data.frame("duration.in.month_woe" = as.numeric(duration_in_months), 
+                   "age.in.years_woe" = as.numeric(age_in_years))
   
   prediction <- data.frame("Prediction" = predict(model, newdata = df, type = "response"), 
                            "Regression_Value" = predict(model, newdata = df, type = "link"))
