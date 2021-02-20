@@ -46,6 +46,7 @@ m2 = eval(m_step$call)
 
 # setwd('~/MyProgramsWindows/Repositories/RiskManagement/CreditScoringApp/')
 # saveRDS(m2, file = './CreditScoringShinyApp/myCreditScoringModel.rds')
+# saveRDS(m2, file = './CreditScoringPlumberApp/myCreditScoringModel.rds')
 
 
 # Predicted probability
