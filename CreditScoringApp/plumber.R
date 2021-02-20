@@ -17,7 +17,7 @@ function(duration_in_months,age_in_years) {
                    "age_in_years_woe" = as.numeric(age_in_years))
   
   prediction <- data.frame("Prediction" = predict(model, newdata = df, type = "response"), 
-                           "Probability" = max(as.numeric(unlist(predict(model, newdata = df, type = "response")))))
+                           "Regression_Value" = predict(model, newdata = df, type = "link"))
   
   response <- toJSON(prediction, dataframe = "columns")
   response
