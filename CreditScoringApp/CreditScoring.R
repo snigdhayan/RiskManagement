@@ -35,7 +35,7 @@ bin_adjustments = woebin(filtered_data, y="creditability", breaks_list=break_adj
 # Convert train and test datasets into woe values
 train_test_woe_data = lapply(train_test_data, function(x) woebin_ply(x, bin_adjustments))
 
-# Apply generalized linear models (glm)
+# Apply logistic regression model
 m1 = glm(creditability ~ ., family = binomial(), data = train_test_woe_data$train)
 # vif(m1, merge_coef = TRUE) # summary(m1)
 

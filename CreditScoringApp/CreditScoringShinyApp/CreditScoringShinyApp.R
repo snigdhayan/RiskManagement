@@ -19,7 +19,7 @@ ui <- fluidPage(
         )),
         column(8, wellPanel(
             h3("Credit Score"),
-            h4("The credit score is the regression value of a simple glm model based on the two input parameters."),
+            h4("The credit score is the regression value of a simple generalized linear model based on the two input parameters."),
             textOutput("score")
             )
         )
