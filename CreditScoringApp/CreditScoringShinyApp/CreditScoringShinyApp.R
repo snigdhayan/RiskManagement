@@ -3,20 +3,27 @@ library(shiny)
 reactiveConsole(TRUE)
 
 
+
 ui <- fluidPage(
-    titlePanel("Input Features"),
-    
-    pageWithSidebar(
-        sidebarPanel(
-            numericInput('Duration', 'Duration of checking account in months', value = 24, min = 1, max = 100),
-            numericInput('Age', 'Age in years', value = 40, min = 1, max = 100),
-            actionButton("submit", label = "Calculate Credit Score")
-        ),
-        
-        titlePanel('Credit Score'),
-        mainPanel(
-            tableOutput("table")
+    titlePanel("Credit Scoring App"),
+    h4("Enter the values of the input parameters and click 'Calculate'."),
+    fluidRow(
+        column(4, wellPanel(
+            h3("Input Parameters"),
+            numericInput('Duration', 'Checking account (in months)', value = 24, min = 1, max = 100),
+            
+            numericInput('Age', 'Age (in years)', value = 40, min = 1, max = 100),
+            
+            br(),
+            actionButton("submit", "Calculate")
+        )),
+        column(8, wellPanel(
+            h3("Credit Score"),
+            h4("The credit score is the regression value of a simple glm model based on the two input parameters."),
+            textOutput("score")
+            )
         )
+               
     )
 )
 
@@ -34,12 +41,11 @@ server <- function(input, output) {
     recompute <- eventReactive(input$submit, {
         df <- data.frame("duration.in.month_woe" = as.numeric(input$Duration), 
                          "age.in.years_woe" = as.numeric(input$Age))
-        prediction <- data.frame("Prediction" = predict(model, newdata = df, type = "response"), 
-                                 "Regression_Value" = predict(model, newdata = df, type = "link"))
+        score <- predict(model, newdata = df, type = "link")
     })
     
     # Server response
-    output$table <- renderTable(
+    output$score <- renderText(
         recompute()
     )
 }
