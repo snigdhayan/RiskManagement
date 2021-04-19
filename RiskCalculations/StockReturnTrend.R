@@ -27,7 +27,7 @@ stock_annual_log_returns %>%
   geom_point(size = 2, color = palette_light()[[3]]) +
   geom_line(size = 1, color = palette_light()[[3]]) + 
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Visualizing Trends in Annual Returns",
+  labs(title = "Visualizing the Trend in Annual Returns",
        x = "", y = "Annual Returns", color = "") +
   theme_tq()
 
