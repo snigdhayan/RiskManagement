@@ -3,9 +3,9 @@ library(tidyverse)
 library(tidyquant)  
 
 # Specify stock ticker and the start and end dates
-ticker <- "TSLA" # Tesla
+ticker <- "BA" # Boeing
 start_date <- "2010-01-01"
-end_date <- "2020-12-31"
+end_date <- "2021-01-01"
 
 # Get stock data and compute annual log returns
 stock <- tq_get(ticker, from = start_date, to = end_date)
@@ -36,3 +36,13 @@ mod <- lm(yearly.returns ~ year(date), data = stock_annual_log_returns)
 
 library(broom)
 tidy(mod)
+
+
+# Forecast the adjusted stock price for the next 90 days
+library(forecast)
+freq <- 250 # approximate number of business days in a year
+timeseries <- ts(stock$adjusted, start = c(2010, 1), end = c(2021, 1), frequency = freq)
+
+fitModel <- arima(timeseries, order = c(1, 1, 1))
+Forecast <- forecast(fitModel, h = 90)
+autoplot(Forecast)
