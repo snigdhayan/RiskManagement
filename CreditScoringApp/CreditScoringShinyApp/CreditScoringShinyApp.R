@@ -1,6 +1,5 @@
-
 library(shiny)
-reactiveConsole(TRUE)
+# reactiveConsole(TRUE)
 
 
 
